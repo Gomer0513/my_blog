@@ -9,7 +9,9 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# coding: utf-8
 import os
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -26,6 +28,9 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+DISQUS_API_KEY = 'Q2cvCk8LWFcUQgd99432YuqdiT4CqBotrIQFdd9TJsTfNNFba3Xd64AEjIvyszJF'
+DISQUS_WEBSITE_SHORTNAME = 'http://localhost:8000/'
+SITE_ID = 1
 
 # Application definition
 
@@ -36,6 +41,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'blog',
+    'disqus',
+    'django.contrib.sites',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -58,8 +66,12 @@ WSGI_APPLICATION = 'my_blog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'blog',
+        'USER': 'root',
+        'PASSWORD': '0513',
+        'HOST': '127.0.0.1',
+        'PORT': '',
     }
 }
 
